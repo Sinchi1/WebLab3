@@ -1,0 +1,85 @@
+.plain{
+    font-family: Tahoma, serif;
+    background: white;
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    /*color: white*/
+}
+
+.redirect {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.redirect h:form {
+    margin: 0 auto;
+}
+
+.clock {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 26px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #ff00fa;
+    padding: 10px;
+    width: 120px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.containerinTime {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    font-style: italic;
+    display: flex;
+    flex-direction: row ;
+    align-items: center;
+    gap: 20px;
+}
+
+.header {
+    font-family: "Comic Sans MS", serif;
+    font-size: 28px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: black;
+    background-image: linear-gradient(90deg, #ffffff, #ff00fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.elements-item {
+    width: 100vh;
+    height: 80vh;
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.elements-item:not(:last-child) {
+    margin-right: 10px;
+}
+
+.cursorBox {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: pink;
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      lang="en">
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Стартовая страница</title>
+
+    <link rel="stylesheet" href="../../../../../../../../Users/George/Desktop/lab3%20(2)/lab3/src/main/webapp/style/index.css" />
+</h:head>
+
+<h:body>
+    <header class = "header">
+        Трусковский Георгий Александрович P3214 Вариант 321419
+    </header>
+    <div class="containerinTime">
+
+        <div class="clock" id="clock">
+            <h:outputText value="#{timeBean.updateTime()}" id="time" />
+        </div>
+        <h:form id="hiddenForm" style="display:none">
+            <h:commandButton id="updateTime">
+                <f:ajax render=":time" />
+            </h:commandButton>
+        </h:form>
+
+        <div class="redirect">
+            <h:form>
+                <h:commandButton value="К стрельбе" action="main?faces-redirect=true" />
+            </h:form>
+        </div>
+
+    </div>
+
+    <script>
+        setInterval(function() {
+            document.getElementById("hiddenForm:updateTime").click();
+        }, 6000);
+    </script>
+</h:body>
+
+</html>
