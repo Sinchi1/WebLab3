@@ -6,6 +6,19 @@
               version="2.2">
 
 <!-- Тута бины будут   -->
+    <managed-bean>
+        <managed-bean-name>TimeBean</managed-bean-name>
+        <managed-bean-class>beans.TimeBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-extension>
+            <post-construct>
+                <lifecycle-callback>
+                    <lifecycle-callback-class>beans.TimeBean</lifecycle-callback-class>
+                    <lifecycle-callback-method>init</lifecycle-callback-method>
+                </lifecycle-callback>
+            </post-construct>
+        </managed-bean-extension>
+    </managed-bean>
 
     <navigation-rule>
         <from-view-id>/time.xhtml</from-view-id>

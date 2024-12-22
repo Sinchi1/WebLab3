@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      lang="en">
+<h:head>
+    <link rel="stylesheet" href="../../../../../../../../Users/George/Desktop/lab3%20(2)/lab3/src/main/webapp/style/index.css" />
+    <script defer="defer" src="../../../../../../../../Users/George/Desktop/lab3%20(2)/lab3/src/main/webapp/logic/index.js"></script>
+    <title>Результаты</title>
+</h:head>
+<h:body>
+        <div class="redirect">
+            <h:form>
+                <h:commandButton value="К часикам" action="time?faces-redirect=true" />
+            </h:form>
+        </div>
+    <header class="header">
+        Трусковский Георгий 413818 Р3214 Вариант 311497</header>
+
+    <div class="container">
+        <div class="elements-item">
+            <h:form id="form">
+                <p>Выберите X:</p>
+                <div>
+                    <h:selectOneMenu id="x" value="#{bean.x}" converter="XConverter">
+                        <f:selectItem itemValue="-2" itemLabel="-2" />
+                        <f:selectItem itemValue="-1.5" itemLabel="-1.5" />
+                        <f:selectItem itemValue="-1" itemLabel="-1" />
+                        <f:selectItem itemValue="-0.5" itemLabel="-0.5" />
+                        <f:selectItem itemValue="0" itemLabel="0" />
+                        <f:selectItem itemValue="0.5" itemLabel="0.5" />
+                        <f:selectItem itemValue="1" itemLabel="1" />
+                        <f:selectItem itemValue="1.5" itemLabel="1.5" />
+                        <f:selectItem itemValue="2" itemLabel="2" />
+                    </h:selectOneMenu>
+                </div>
+                <h:message for="x" styleClass="error" />
+
+
+                <div>
+                <p>
+                    y - координата точки по оси oy (от -3 до 3)<br />
+                    <h:inputText id="y" value="#{bean.y}"
+                                 placeholder="-5...3"
+                                 converter="YConverter"
+                    />
+                    <h:message for="y" styleClass="error" />
+                </p>
+                </div>
+
+                <div>
+                    <p>
+                        R - координата точки по оси oy (от 1 до 4)<br />
+                        <h:inputText id="r" value="#{bean.r}"
+                                     placeholder="[1..4]"
+                                     converter="RConverter"
+                                     onchange = "renderPoints(#{item.r})"
+                        />
+
+                        <h:message for="r" styleClass="error" />
+                    </p>
+                </div>
+
+                <p>
+                    <h:commandButton value="Подтвердить" action="#{bean.process}"  onclick = 'drawPointfromStandart()' />
+                </p>
+            </h:form>
+        </div>
+
+
+        <h:form id="graphForm"  >
+            <h:inputHidden id="xCoord" value="#{bean.graphX}" />
+            <h:inputHidden id="yCoord" value="#{bean.graphY}" />
+            <h:inputHidden id="hit" value="#{bean.hit}" />
+            <h:inputHidden id="rValue" value="#{bean.r}" />
+            <h:commandButton id="graphFormButton" action="#{bean.submitFromGraph()}" style="display:none;" ></h:commandButton>
+        </h:form>
+        <div class="elements-item">
+            <div id="center_graphic" class="column" style="display: block;
+                                                           margin: 0 auto;
+                                                           text-align: center;">
+                <svg id="graph" height="500" width="500" xmlns="http://www.w3.org/2000/svg" onclick="sendCoordinates(event)">
+                    <line stroke="black" x1="0" x2="500" y1="250" y2="250" />
+                    <line stroke="black" x1="250" x2="250" y1="0" y2="500" />
+                    <!-- Стрелки -->
+                    <line stroke="black" x1="250" x2="255" y1="0" y2="10" />
+                    <line stroke="black" x1="250" x2="245" y1="0" y2="10" />
+
+                    <line stroke="black" x1="500" x2="490" y1="250" y2="255" />
+                    <line stroke="black" x1="500" x2="490" y1="250" y2="245" />
+
+                    <!-- Засечки -->
+                    <line stroke="black" x1="50" x2="50" y1="255" y2="245" />
+                    <line stroke="black" x1="150" x2="150" y1="255" y2="245" />
+                    <line stroke="black" x1="350" x2="350" y1="255" y2="245" />
+                    <line stroke="black" x1="450" x2="450" y1="255" y2="245" />
+
+                    <line stroke="black" x1="255" x2="245" y1="50" y2="50" />
+                    <line stroke="black" x1="255" x2="245" y1="150" y2="150" />
+                    <line stroke="black" x1="255" x2="245" y1="350" y2="350" />
+                    <line stroke="black" x1="255" x2="245" y1="450" y2="450" />
+
+                    <!-- Буквы -->
+                    <text fill="black" x="260" y="55">R</text>
+                    <text fill="black" x="260" y="155">R/2</text>
+                    <text fill="black" x="260" y="355">-R/2</text>
+                    <text fill="black" x="260" y="455">-R</text>
+
+                    <text fill="black" x="45" y="240">-R</text>
+                    <text fill="black" x="140" y="240">-R/2</text>
+                    <text fill="black" x="340" y="240">R/2</text>
+                    <text fill="black" x="445" y="240">R</text>
+
+                    <text fill="black" x="260" y="10">y</text>
+                    <text fill="black" x="490" y="240">x</text>
+
+
+                    <path d="M 350 250 A 100 100 0 0 1 250 350 L 250 250 Z" fill="blue" opacity="0.8" />
+                    <rect x="50" y="250" width="200" height="100" fill="blue" opacity="0.8" />
+                    <polygon points="250,150 250,250 350,250" fill="blue" opacity="0.8"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+        <div class="elements-item">
+            <div id="right_table" class="column" onchange="getPoints()">
+                <h:dataTable id="results" value="#{bean.results}" var="item" styleClass="results">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Результат" />
+                        </f:facet>
+                        <h:outputText value="#{item.hit ? 'Попадание' : 'Промах'}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="X" />
+                        </f:facet>
+                        <h:outputText value="#{item.x}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Y" />
+                        </f:facet>
+                        <h:outputText value="#{item.y}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="R" />
+                        </f:facet>
+                        <h:outputText value="#{item.r}"  />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Время" />
+                        </f:facet>
+                        <h:outputText value="#{item.timeNow}" />
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+
+    </h:body>
+</html>
