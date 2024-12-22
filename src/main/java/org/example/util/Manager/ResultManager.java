@@ -1,7 +1,7 @@
 package org.example.util.Manager;
 
-import model.Result;
-import util.AreaChecker;
+import org.example.model.Result;
+import org.example.util.AreaChecker;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;

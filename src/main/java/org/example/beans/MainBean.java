@@ -1,10 +1,10 @@
 package org.example.beans;
 
 import jakarta.persistence.*;
-import model.Point;
-import model.Result;
-import util.AreaChecker;
-import util.Manager.ResultManager;
+import org.example.model.Point;
+import org.example.model.Result;
+import org.example.util.AreaChecker;
+import org.example.util.Manager.ResultManager;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
