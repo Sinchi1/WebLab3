@@ -1,12 +1,14 @@
 package org.example.beans;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.SessionScoped;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+@ManagedBean(name = "bean")
+@ApplicationScoped
 public class TimeBean {
 
     private String currentTime;

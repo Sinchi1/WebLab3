@@ -6,12 +6,15 @@ import org.example.model.Result;
 import org.example.util.AreaChecker;
 import org.example.util.Manager.ResultManager;
 
+import javax.annotation.ManagedBean;
+import javax.faces.bean.ApplicationScoped;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@ManagedBean(name = "bean")
+@ApplicationScoped
 public class MainBean {
 
     private double x=0.0;
