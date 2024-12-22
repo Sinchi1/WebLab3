@@ -95,13 +95,6 @@ public class MainBean {
     public void addResult(Result result) {
         results.add(result);
     }
-    public List<Point> getPointsForGraph() {
-        List<Point> points = new ArrayList<>();
-        for (Result item : results) {
-            points.add(new Point(item.getX(), item.getY(), item.getR(), item.isHit()));
-        }
-        return points;
-    }
 
     private boolean checkHit() {
         return areaChecker.isInside(x,y,r);
